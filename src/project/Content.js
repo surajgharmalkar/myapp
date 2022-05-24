@@ -1,8 +1,9 @@
-import { Component } from "react";
-import React from "react";
+import { Component,react } from "react";
+
 import { database } from "./FirebaseConfig";
 import { ref,onValue, set } from "firebase/database";
 import { Link } from "react-router-dom";
+
 
 
 
@@ -14,6 +15,8 @@ export class Content extends Component{
         products:[],
         quantity:0
     }
+
+     
 
     componentDidMount(){
        
@@ -106,25 +109,30 @@ export class Content extends Component{
         return(
             <div className="m-3">
                 <div className="row">
-                    <div className="col-3">
-                    <ul className="list-group">
-       <li className="list-group-item active " aria-current="true" key={1} onClick={()=>{this.handlename("All Category")}}>All Categories</li>
-      {this.state.categories.map(category=>(
-      <li  className="list-group-item  " key={category['categoryname']} onClick={()=>{this.handlename(category['categoryname'])}}>{category['categoryname']}</li>))} 
-     </ul>
-     </div>
 
-      <div className="col-9">
-          <div className="row">
-              {this.state.products.map(product=>(<div className='col-4'> 
-              <div key={product['title']} className="card m-1" style= {{width:'18rem'}}>
+          <div className="col-3">
+
+    <div className="list-group">             
+<button type="button" className="list-group-item list-group-item-action active" aria-current="true" key={1} onClick={()=>{this.handlename("All Category")}}>
+  All Categories
+  </button>
+      {this.state.categories.map(category=>(
+        <button type="button" className="list-group-item list-group-item-action" key={category['categoryname']} onClick={()=>{this.handlename(category['categoryname'])}}>{category['categoryname']}</button>))} 
+        </div>
+    </div>
+  
+   <div className=" col-9 ">
+    <div className="row item" >
+              {this.state.products.map(product=>(<div className='col-12 col-md-6 col-lg-4  '> 
+              <div key={product['title']} className="card m-1 " style= {{width:'18rem'}}>
     <img src={product['imageurl']} style= {{width:'18rem',maxHeight:'10rem'}} className="card-img-top" alt="..."/>
     <div className="card-body">
+        
     <h5 className="card-title">{product['title']}</h5>
     <h5 className="card-title">{product['price']}</h5>
     <div className="row">
         <div className="col-6">
-        <select class="form-select" aria-label="Default select example" onClick={(e)=>{
+        <select className="form-select" aria-label="Default select example" onClick={(e)=>{
             this.handleclick(e.target.value);
         }}>
   <option onValue>Quantity</option>
@@ -143,12 +151,13 @@ export class Content extends Component{
   </div>
   </div>
               ))}
-          
           </div>
-      </div>
-
-</div>
-</div>
+          </div>
+          </div>
+          </div>
+   
+     
+ 
 );
     }
 }

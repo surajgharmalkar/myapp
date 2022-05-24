@@ -2,6 +2,7 @@ import { Component,React} from "react";
 import { auth } from "./FirebaseConfig";
 import { ref,onValue, set, remove } from "firebase/database";
 import { database } from "./FirebaseConfig";
+import "bootstrap/js/src/collapse.js";
 
 
 import { Link } from "react-router-dom";

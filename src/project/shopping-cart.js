@@ -3,7 +3,12 @@ import { ref,onValue, set,remove } from "firebase/database";
 import { database } from "./FirebaseConfig";
 import { GoogleAuthProvider,signInWithRedirect,signOut,onAuthStateChanged } from "firebase/auth";
 import { auth } from "./FirebaseConfig";
+import { Link } from "react-router-dom";
 
+
+import { Route } from "react-router-dom";
+import { Payment } from "./paymentgateway";
+import { Switch } from "react-router-dom";
 
 
 export class ShoppingCart extends Component{
@@ -12,6 +17,7 @@ export class ShoppingCart extends Component{
     state={
     
         products:{},
+     
     }
 
 
@@ -47,8 +53,11 @@ export class ShoppingCart extends Component{
     handleclick=()=>{
       onAuthStateChanged(auth,(user)=>{
         if(user){
-            //logic of paymentgateway
+            
+         
+         
         }
+
         else{
           signInWithRedirect(auth,new GoogleAuthProvider());
         }
@@ -91,8 +100,9 @@ export class ShoppingCart extends Component{
           <td>{this.state.products[product].product.price}</td>
           <td>{this.state.products[product].quantity}</td>
           <td>{this.state.products[product].product.price*this.state.products[product].quantity}</td>
-          <td><button className="btn btn-danger" onClick={()=>{this.handledelete(product)}}>Delete</button></td>
+        <td key={product}><button className="btn btn-danger" onClick={()=>{this.handledelete(product)}}>Delete</button></td>
         </tr>
+          
       ))}
    </tbody>
    <tfoot>
@@ -100,8 +110,8 @@ export class ShoppingCart extends Component{
      <td></td>
      <td></td>
      <td></td>
-     <td></td>
-     <td><button className="btn btn-success active" onClick={this.handleclick}>Checkout</button></td>
+     <td ></td>
+     <td ><Link className="btn btn-success active" to = "/paymentgateway" onClick={this.handleclick}>Checkout& Pay</Link></td>
 
    </tfoot>
     

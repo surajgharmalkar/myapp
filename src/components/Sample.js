@@ -1,54 +1,34 @@
 import React, { Component } from "react";
-import Axios from "axios";
+
+
+import "bootstrap/js/src/collapse.js";
 
 
 
 
 
-export class Sample extends Component{
-
-    state={
-       
-          item:[]
-     
-    };
-
- 
-
-    async componentDidMount() {
-     
-       const {data:response} =await Axios.get("https://randomuser.me/api/");
-       this.setState({item:response.results})
-
+export class Sample extends Component
           
+{
 
-          
-  }
 
+
+  
+      
     render(){
         return(
-            
-
-                <div className="container">
-          {
-          this.state.item.map(item=>(
-               <div className="card" Style="width: 18rem;">
-    <img src={item.picture.large} className="card-img-top" alt="..."/>
+       
+          <div className="container">
+          <div className="card" style={{width: '18rem'}}>
+  <img src="" className="card-img-top" alt="..."/>
   <div className="card-body">
-    <h5 className="card-title">Name:{item.name.title} {item.name.first}  {item.name.last}</h5>
-    <p className="card-text"> Street: {item.location.street.number}  {item.location.street.name} </p>
-    <p className="card-text"> City:{item.location.city} </p>
-    <p className="card-text"> State:{item.location.state} </p>
-    <p className="card-text"> Postcode:{item.location.postcode} </p>
-    
+    <h5 className="card-title">Card title</h5>
+    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" className="btn btn-primary">Go somewhere</a>
   </div>
-</div>))}
-                
-
-
-                </div>
-
+</div>
+          </div>
+        
         );
     }
-
-}
+  }

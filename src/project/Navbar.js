@@ -73,7 +73,7 @@ export class Navbar extends Component{
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                <Link className="nav-link active" aria-current="page" to="/myapp/">Home</Link>
               </li>
               <li className="nav-item">
                 <Link className="btn btn-warning"  to="/shopping-cart">ShoppingCart <span className="badge bg-danger ms-1">{this.state.productincart}</span></Link>
